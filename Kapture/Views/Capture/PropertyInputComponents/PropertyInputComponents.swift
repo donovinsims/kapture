@@ -34,7 +34,7 @@ struct NumberPropertyView: View {
         TextField("Enter number", text: $textValue)
             .keyboardType(.decimalPad)
             .textFieldStyle(.roundedBorder)
-            .onChange(of: textValue) { newValue in
+            .onChange(of: textValue) { oldValue, newValue in
                 value = Double(newValue)
             }
             .onAppear {

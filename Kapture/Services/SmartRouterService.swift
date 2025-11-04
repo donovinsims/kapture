@@ -22,7 +22,6 @@ actor SmartRouterService {
         
         let calendar = Calendar.current
         let hour = calendar.component(.hour, from: time)
-        let weekday = calendar.component(.weekday, from: time)
         
         // Find databases used at similar times
         if let preferences = preferences {
@@ -33,17 +32,15 @@ actor SmartRouterService {
                 
                 // If used within 2 hours of current time, suggest it
                 if timeDiff <= 2 {
-                    do {
-                        return try await databaseRepository.fetchDatabase(id: preference.databaseId)
-                    } catch {
-                        continue
+                    if let database = try? await databaseRepository.fetchDatabase(id: preference.databaseId) {
+                        return database
                     }
                 }
             }
         }
         
         // Fallback: most recently used database
-        return try? await databaseRepository.getMostRecentDatabase()
+        return await databaseRepository.getMostRecentDatabase()
     }
     
     /// Records a capture pattern for learning.
@@ -72,12 +69,8 @@ actor SmartRouterService {
         var suggestions: [NotionDatabase] = []
         
         for preference in preferences {
-            do {
-                if let database = try? await databaseRepository.fetchDatabase(id: preference.databaseId) {
-                    suggestions.append(database)
-                }
-            } catch {
-                continue
+            if let database = try? await databaseRepository.fetchDatabase(id: preference.databaseId) {
+                suggestions.append(database)
             }
         }
         

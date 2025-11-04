@@ -8,6 +8,9 @@ struct CaptureView: View {
     var body: some View {
         NavigationView {
             ZStack {
+                Color(UIColor.systemBackground)
+                    .ignoresSafeArea()
+                
                 if viewModel.selectedDatabase == nil {
                     emptyStateView
                 } else {
@@ -19,6 +22,7 @@ struct CaptureView: View {
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
                     Button(action: {
+                        print("🔵 Toolbar database selector button tapped")
                         viewModel.showDatabaseSelector = true
                     }) {
                         HStack(spacing: 4) {
@@ -85,6 +89,7 @@ struct CaptureView: View {
                 .padding(.horizontal)
             
             Button(action: {
+                print("🔵 Select Database button tapped")
                 viewModel.showDatabaseSelector = true
             }) {
                 Text("Select Database")
@@ -95,6 +100,8 @@ struct CaptureView: View {
                     .foregroundColor(.white)
                     .cornerRadius(12)
             }
+            .buttonStyle(.plain)
+            .contentShape(Rectangle())
             .padding(.horizontal, 32)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -141,6 +148,7 @@ struct CaptureView: View {
                 
                 // Capture button
                 Button(action: {
+                    print("🔵 Capture button tapped")
                     Task {
                         do {
                             try await viewModel.captureEntry()
@@ -166,6 +174,8 @@ struct CaptureView: View {
                     .foregroundColor(.white)
                     .cornerRadius(12)
                 }
+                .buttonStyle(.plain)
+                .contentShape(Rectangle())
                 .disabled(viewModel.isCapturing)
                 .padding(.horizontal)
                 .padding(.bottom)

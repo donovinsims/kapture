@@ -44,20 +44,21 @@ struct NotionAuthView: View {
                     
                     // Connect Button
                     Button(action: {
+                        print("🔵 Authorize with Notion button tapped")
                         Task {
                             await connectToNotion()
                         }
                     }) {
-                        HStack {
-                            Text("Authorize with Notion")
-                                .font(.system(size: 17, weight: .semibold))
-                        }
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 50)
-                        .background(Color.blue)
-                        .foregroundColor(.white)
-                        .cornerRadius(12)
+                        Text("Authorize with Notion")
+                            .font(.system(size: 17, weight: .semibold))
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 50)
+                            .background(Color.blue)
+                            .foregroundColor(.white)
+                            .cornerRadius(12)
                     }
+                    .buttonStyle(.plain)
+                    .contentShape(Rectangle())
                     .padding(.horizontal, 32)
                     .padding(.bottom, 40)
                 }
@@ -71,11 +72,10 @@ struct NotionAuthView: View {
                     }
                 }
             }
-            .sheet(item: Binding(
-                get: { authURL },
-                set: { authURL = $0 }
-            )) { url in
-                SafariView(url: url)
+            .sheet(isPresented: $isPresentingSafari) {
+                if let url = authURL {
+                    SafariView(url: url)
+                }
             }
             .alert("Authentication Error", isPresented: Binding(
                 get: { authError != nil },
@@ -93,17 +93,27 @@ struct NotionAuthView: View {
     }
     
     private func connectToNotion() async {
+        print("🔐 connectToNotion() called")
         isLoading = true
         defer { isLoading = false }
         
         do {
+            print("🔐 Calling authService.startOAuthFlow()...")
             let url = try await authService.startOAuthFlow()
-            authURL = url
+            print("✅ OAuth URL received: \(url)")
+            await MainActor.run {
+                authURL = url
+                isPresentingSafari = true
+                print("✅ authURL set, Safari should open")
+            }
         } catch {
-            if let authErr = error as? AuthError {
-                authError = authErr
-            } else {
-                authError = .invalidConfiguration
+            print("❌ Error in connectToNotion: \(error.localizedDescription)")
+            await MainActor.run {
+                if let authErr = error as? AuthError {
+                    authError = authErr
+                } else {
+                    authError = .invalidConfiguration
+                }
             }
         }
     }
@@ -143,14 +153,6 @@ struct SafariView: UIViewControllerRepresentable {
     }
 }
 
-/// Make URL identifiable for sheet presentation
-extension URL: Identifiable {
-    public var id: String {
-        self.absoluteString
-    }
-}
-
 #Preview {
     NotionAuthView()
 }
-

@@ -44,7 +44,7 @@ struct PropertyInputView: View {
                     UnsupportedPropertyView(propertyType: property.type.rawValue)
                 }
             }
-            .onChange(of: internalValue) { newValue in
+            .onChange(of: internalValue) { oldValue, newValue in
                 value = newValue
             }
         }

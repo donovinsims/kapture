@@ -29,15 +29,23 @@ class AuthService: ObservableObject {
     /// - Returns: URL for OAuth authorization
     /// - Throws: AuthError if configuration is invalid
     func startOAuthFlow() async throws -> URL {
+        print("🔐 startOAuthFlow called")
+        print("🔐 Config.notionClientId: \(Config.notionClientId ?? "nil")")
+        print("🔐 Config.notionRedirectURI: \(Config.notionRedirectURI ?? "nil")")
+        
         guard let clientId = Config.notionClientId,
               let redirectURI = Config.notionRedirectURI else {
+            print("❌ Missing configuration - clientId: \(Config.notionClientId != nil), redirectURI: \(Config.notionRedirectURI != nil)")
             throw AuthError.invalidConfiguration
         }
         
-        return await apiClient.buildOAuthURL(
+        print("✅ Building OAuth URL with clientId: \(clientId.prefix(8))...")
+        let url = await apiClient.buildOAuthURL(
             clientId: clientId,
             redirectURI: redirectURI
         )
+        print("✅ OAuth URL created: \(url)")
+        return url
     }
     
     /// Handles the OAuth callback URL and exchanges code for token
@@ -95,7 +103,7 @@ class AuthService: ObservableObject {
     /// Refreshes the access token using the refresh token
     /// - Throws: AuthError if refresh fails
     func refreshToken() async throws {
-        guard let refreshToken = try? keychain.retrieve(.notionRefreshToken) else {
+        guard keychain.exists(.notionRefreshToken) else {
             throw AuthError.notAuthenticated
         }
         

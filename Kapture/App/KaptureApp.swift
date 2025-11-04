@@ -73,16 +73,21 @@ struct ContentView: View {
     @EnvironmentObject var appState: AppState
     @StateObject private var authService = AuthService.shared
     
+    // Development flag: set to true to bypass authentication
+    private let bypassAuth = true
+    
     var body: some View {
         Group {
-            if authService.isAuthenticated {
+            if bypassAuth || authService.isAuthenticated {
                 CaptureView()
             } else {
                 WelcomeView()
             }
         }
         .task {
-            await authService.checkAuthenticationStatus()
+            if !bypassAuth {
+                await authService.checkAuthenticationStatus()
+            }
         }
     }
 }

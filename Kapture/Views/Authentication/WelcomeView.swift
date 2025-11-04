@@ -7,79 +7,82 @@ struct WelcomeView: View {
     @State private var authError: AuthError?
     
     var body: some View {
-        NavigationView {
-            VStack(spacing: 32) {
-                // App Icon/Logo
-                Image(systemName: "bolt.fill")
-                    .font(.system(size: 80))
-                    .foregroundColor(.blue)
-                    .padding(.top, 60)
+        VStack(spacing: 32) {
+            // App Icon/Logo
+            Image(systemName: "bolt.fill")
+                .font(.system(size: 80))
+                .foregroundColor(.blue)
+                .padding(.top, 60)
+            
+            // Title
+            VStack(spacing: 8) {
+                Text("Welcome to Kapture")
+                    .font(.system(size: 34, weight: .bold))
                 
-                // Title
-                VStack(spacing: 8) {
-                    Text("Welcome to Kapture")
-                        .font(.system(size: 34, weight: .bold))
-                    
-                    Text("Fast Notion Capture")
-                        .font(.system(size: 17))
-                        .foregroundColor(.secondary)
-                }
+                Text("Fast Notion Capture")
+                    .font(.system(size: 17))
+                    .foregroundColor(.secondary)
+            }
+            
+            // Description
+            VStack(alignment: .leading, spacing: 16) {
+                FeatureRow(
+                    icon: "bolt.fill",
+                    title: "Lightning Fast",
+                    description: "Capture entries in under 2 seconds"
+                )
                 
-                // Description
-                VStack(alignment: .leading, spacing: 16) {
-                    FeatureRow(
-                        icon: "bolt.fill",
-                        title: "Lightning Fast",
-                        description: "Capture entries in under 2 seconds"
-                    )
-                    
-                    FeatureRow(
-                        icon: "database.fill",
-                        title: "Full Database Support",
-                        description: "All property types and inline databases"
-                    )
-                    
-                    FeatureRow(
-                        icon: "wifi.slash",
-                        title: "Works Offline",
-                        description: "Capture anywhere, sync automatically"
-                    )
-                }
-                .padding(.horizontal, 32)
+                FeatureRow(
+                    icon: "database.fill",
+                    title: "Full Database Support",
+                    description: "All property types and inline databases"
+                )
                 
-                Spacer()
-                
-                // Connect Button
-                Button(action: {
-                    isPresentingAuth = true
-                }) {
-                    HStack {
-                        Text("Connect Notion")
-                            .font(.system(size: 17, weight: .semibold))
-                    }
+                FeatureRow(
+                    icon: "wifi.slash",
+                    title: "Works Offline",
+                    description: "Capture anywhere, sync automatically"
+                )
+            }
+            .padding(.horizontal, 32)
+            
+            Spacer()
+            
+            // Connect Button
+            Button(action: {
+                print("🔵 Connect Notion button tapped")
+                isPresentingAuth = true
+                print("🔵 isPresentingAuth set to: \(isPresentingAuth)")
+            }) {
+                Text("Connect Notion")
+                    .font(.system(size: 17, weight: .semibold))
                     .frame(maxWidth: .infinity)
                     .frame(height: 50)
                     .background(Color.blue)
                     .foregroundColor(.white)
                     .cornerRadius(12)
-                }
-                .padding(.horizontal, 32)
-                .padding(.bottom, 40)
             }
-            .sheet(isPresented: $isPresentingAuth) {
-                NotionAuthView()
+            .buttonStyle(.plain)
+            .contentShape(Rectangle())
+            .padding(.horizontal, 32)
+            .padding(.bottom, 40)
+        }
+        .sheet(isPresented: $isPresentingAuth) {
+            NotionAuthView()
+        }
+        .onChange(of: isPresentingAuth) { oldValue, newValue in
+            print("📄 isPresentingAuth changed from \(oldValue) to \(newValue)")
+        }
+        .alert("Authentication Error", isPresented: Binding(
+            get: { authError != nil },
+            set: { if !$0 { authError = nil } }
+        )) {
+            Button("OK") {
+                authError = nil
             }
-            .alert("Authentication Error", isPresented: Binding(
-                get: { authError != nil },
-                set: { if !$0 { authError = nil } }
-            )) {
-                Button("OK") {
-                    authError = nil
-                }
-            } message: {
-                if let error = authError {
-                    Text(error.localizedDescription)
-                }
+        } message: {
+            if let error = authError {
+                Text(error.localizedDescription)
             }
         }
     }
