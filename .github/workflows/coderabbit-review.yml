@@ -2,22 +2,34 @@ name: CodeRabbit Review
 
 on:
   pull_request:
-    types: [opened, synchronize, reopened]
+    types: [opened, synchronize, reopened, ready_for_review]
   push:
-    branches:
-      - main
-      - develop
+  schedule:
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
 
 jobs:
   coderabbit-review:
     name: CodeRabbit Continuous Review
     runs-on: ubuntu-latest
+    concurrency:
+      group: coderabbit-${{ github.ref }}
+      cancel-in-progress: false
     
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
           fetch-depth: 0  # Full history for better diff analysis
+
+      - name: Determine review context
+        id: context
+        run: |
+          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            echo "run_review=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "run_review=false" >> "$GITHUB_OUTPUT"
+          fi
       
       - name: Setup Swift
         uses: swift-actions/setup-swift@v1
@@ -32,7 +44,8 @@ jobs:
           fi
       
       - name: CodeRabbit Review
-        uses: coderabbitai/openai-pr-reviewer@latest
+        if: steps.context.outputs.run_review == 'true'
+        uses: coderabbitai/openai-pr-reviewer@v1
         with:
           # GitHub token for posting comments
           github_token: ${{ secrets.GITHUB_TOKEN }}
@@ -55,13 +68,18 @@ jobs:
           review_only_changed_files: true
           enable_auto_review: true
           enable_auto_summary: true
-          
+
         env:
           # Optional: Add OpenAI API key if using OpenAI reviewer
           # OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          
+
           # GitHub token (automatically provided)
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Skip notice
+        if: steps.context.outputs.run_review != 'true'
+        run: |
+          echo "CodeRabbit review step skipped because this workflow run (event: ${{ github.event_name }}) does not provide a pull request context." >> $GITHUB_STEP_SUMMARY
 
       - name: Post Review Summary
         if: always()
