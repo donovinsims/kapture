@@ -1,0 +1,117 @@
+# Agent Workflow Guide
+
+To contribute safely and consistently, follow this checklist **in order** whenever you work on the repository:
+
+## 1. Read the README
+- Refresh yourself on the project goals, structure, scripts, and prerequisites in `README.md`.
+
+## 2. Sync in AGENT_CHAT
+- Check `AGENT_CHAT.md` for in-progress work so you avoid conflicts.
+- Read the entire file before adding anything.
+- Pick a short, task-themed username (e.g. `draggable-window`) and wrap your plan/updates in a matching XML tag: `<draggable-window>…</draggable-window>`.
+- Inside that tag, clearly list the files you expect to modify and keep your running plan/progress notes there.
+- Check if verification is currently running (look for `<verification-lock>` tag in AGENT_CHAT.md)
+- If another agent already claimed a file you need, wait until they remove their tag before beginning work on it.
+- When you finish, remove only the XML block you added—leave other agents' entries intact.
+
+## 3. Research the codebase
+- Inspect the files relevant to your task before editing. Trace current implementations to understand existing behavior and dependencies.
+- If you need documentation for third-party APIs or libraries, use the Parallel MCP web search to gather the latest references before coding.
+- When you hit runtime or tooling errors, search the web with Parallel first to collect fixes or known workarounds before resorting to trial-and-error debugging.
+
+## 4. Plan appropriately
+- For large changes, draft a clear plan and get confirmation from the requester before coding.
+- For small or straightforward tasks, form a quick mental or written plan and move straight to implementation.
+
+## 5. Execute the plan
+- Apply the necessary code changes, keeping diffs focused and well-explained with minimal but helpful comments when needed.
+
+## 6. Run the full verification suite
+- **CRITICAL:** Before running verification, check `AGENT_CHAT.md` for a `<verification-lock>` tag
+- If verification is running (lock exists), wait 2 minutes and check again
+- If no lock exists, add a `<verification-lock>` tag to `AGENT_CHAT.md` with your agent name and timestamp
+- Execute `bun run verify`. Address any failures before proceeding.
+- **IMPORTANT:** Remove the `<verification-lock>` tag immediately after verification completes (success or failure)
+
+## 7. Add or update tests
+- Before committing any long-term or automated tests, run an ad-hoc Playwright pass against your existing dev server: `PLAYWRIGHT_SKIP_WEB_SERVER=1 bunx playwright test` (use `--headed` if you want to watch the run). This smoke check should catch console errors or obvious regressions while you iterate.
+- Ensure new behavior is covered by automated tests. Run `bun run verify` again after adding tests (following the lock protocol from step 6).
+
+## 8. Review documentation
+- Re-read `README.md`. If the change affects setup, usage, or workflows, update the documentation accordingly.
+
+## Additional rules
+
+- **Never** run `bun run dev` or `bun run build`; the dev server is handled externally, and `bun run verify` is used to validate changes.
+- Keep `AGENT_CHAT.md` tidy: only edit your own notes, and clear them when you wrap up.
+- **Verification Lock Protocol:** Always check for and respect verification locks. Wait if another agent is verifying. Never run verification without acquiring the lock first.
+
+## Module Boundaries (For Parallel Development)
+
+To minimize conflicts, agents should work within these module boundaries:
+
+**Feature Agents:**
+- **notion-auth:** `Services/AuthService.swift`, `Services/NotionAPIClient.swift`, `Utilities/KeychainManager.swift`, `Views/Authentication/*`
+- **capture-ui:** `Views/Capture/CaptureView.swift`, `ViewModels/CaptureViewModel.swift`
+- **database-management:** `Services/DatabaseRepository.swift`, `ViewModels/DatabaseListViewModel.swift`, `Views/Capture/DatabaseSelectorView.swift`, `Models/Notion/NotionDatabase.swift`
+- **property-inputs:** `Views/Capture/PropertyInputView.swift`, `Views/Capture/PropertyInputComponents/*`, `Models/Notion/NotionProperty*.swift`
+- **offline-sync:** `Services/SyncService.swift`, `Services/StorageService.swift`, `Models/Local/*`, `Repositories/*`
+- **widgets:** `KaptureWidget/*` (entire widget extension)
+- **smart-routing:** `Services/SmartRouterService.swift`
+
+**Cross-module coordination:** If you need to modify a file outside your module, check with the owning agent in `AGENT_CHAT.md` first.
+
+## Quality Agents Workflow
+
+### For Feature Agents:
+- When you complete a feature/task, mark it in `AGENT_CHAT.md` with `<feature-complete>` tag containing:
+  - Files modified
+  - Brief description
+  - Timestamp
+- Example: `<feature-complete agent="capture-ui" files="CaptureView.swift,CaptureViewModel.swift" timestamp="2025-01-15T10:30:00Z" />`
+- After marking complete, you can remove your work tag, but keep the `<feature-complete>` tag until quality agents finish
+
+### For Code Cleaner Agent (`code-cleaner`):
+- Monitor `AGENT_CHAT.md` for `<feature-complete>` tags
+- Wait until feature agent removes their work tag (indicating they're done)
+- Claim files from `<feature-complete>` entries
+- **Responsibilities:**
+  - Format code according to Swift style guidelines
+  - Remove unused imports/variables
+  - Improve naming conventions
+  - Add/improve documentation comments
+  - Refactor for readability (without changing functionality)
+  - Ensure consistent code style across files
+- After cleaning, mark with `<cleaned>` tag: `<cleaned agent="code-cleaner" files="..." timestamp="..." />`
+- Do NOT modify logic or functionality - only style/formatting/readability
+
+### For QA Bug Hunter Agent (`qa-bug-hunter`):
+- Monitor `AGENT_CHAT.md` for `<feature-complete>` or `<cleaned>` tags
+- Can work in parallel with `code-cleaner` or after
+- **Responsibilities:**
+  - Write/update unit tests for new code
+  - Run static analysis tools (SwiftLint, SwiftCompiler warnings)
+  - Identify potential bugs, edge cases, memory leaks
+  - Test error handling paths
+  - Check for performance issues
+  - Verify security best practices
+- Create fixes for bugs found and mark with `<bug-fixed>` tag: `<bug-fixed agent="qa-bug-hunter" files="..." issues="..." timestamp="..." />`
+- If bug requires significant logic changes, coordinate with original feature agent
+
+### Quality Agent Coordination:
+- Quality agents can work on the same files simultaneously IF:
+  - `code-cleaner` focuses on formatting/style only
+  - `qa-bug-hunter` focuses on tests and bug fixes
+- Both must respect verification locks (step 6)
+- Quality agents should NOT claim files that feature agents are actively working on
+- Quality agents should work on files marked as complete in `AGENT_CHAT.md`
+
+### Quality Agent Priority:
+1. Feature agent completes work → marks `<feature-complete>`
+2. Feature agent removes their work tag
+3. `code-cleaner` picks up files → cleans → marks `<cleaned>`
+4. `qa-bug-hunter` picks up files → tests/fixes → marks `<bug-fixed>`
+5. Both quality agents can run verification independently (with lock protocol)
+6. When both quality agents complete, remove the `<feature-complete>` tag
+
+Following these steps helps keep the project stable and makes future collaboration smoother.

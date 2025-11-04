@@ -1,0 +1,691 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 63;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		11A4A28E1444D8B91C386D17 /* CapturedEntryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DD204F2415D86278B43041 /* CapturedEntryTests.swift */; };
+		2551BBD1E7538225CEA7E549 /* CaptureViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F400AB4ADE94C2E4A3EC00D9 /* CaptureViewModelTests.swift */; };
+		3780C1DF67C5832064A82FF6 /* CaptureViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F5B250CECE2182403FD82E /* CaptureViewModel.swift */; };
+		3D6260C53279ED29D76AB03B /* SyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71C8024DE3A99704DF4D4A7 /* SyncService.swift */; };
+		55094034AE21136C5939D8B6 /* NotionDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D7B4E786F0151C1F27F305 /* NotionDatabase.swift */; };
+		59A459F2CC1F4798F9B70622 /* PropertyInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8660D2675403BFFFD36F6F66 /* PropertyInputView.swift */; };
+		6B8CA3067AD52DFF24B2B225 /* DatabaseSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784C8B52E46ABFDF4A8291F7 /* DatabaseSelectorView.swift */; };
+		7F83F1FFCE1A30F96F9E01F9 /* SmartRouterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75256BEC122171A5CFBA6AD /* SmartRouterService.swift */; };
+		80EDBC0B8D1FF65E4AF303F9 /* NotionProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD83C16D817D8269AFF9D9B /* NotionProperty.swift */; };
+		82B17B99B72085501EEF225B /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435078A4F86419886B73EDA7 /* KeychainManager.swift */; };
+		8410663FF69DBF4DABA00A9A /* DatabaseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC1664D5E87106BF44195FA /* DatabaseRepository.swift */; };
+		93C5BBD3848EEC0D7CA4EC4E /* AuthServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608FEA6116CF3BB9FB11DE0C /* AuthServiceTests.swift */; };
+		95E28814E7A9492AC37DEA57 /* PropertyInputComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59DE239AD9BBEA938BA76F4 /* PropertyInputComponents.swift */; };
+		9DEB946965F6C30A62BC2314 /* KaptureApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C541C8811486311C0A5019 /* KaptureApp.swift */; };
+		A044F420BDBC45C4458964ED /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06C6C3C46FE95385A614B3F3 /* StorageService.swift */; };
+		A2C09E5994332100290BDBFE /* KaptureWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663519EFCC07B56DDFE1D90F /* KaptureWidget.swift */; };
+		B2A3726D886F70FDF1F5AE26 /* NotionAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2CCFD9656092400B33FDA9 /* NotionAuthView.swift */; };
+		B79411B7FCD92B46798C5730 /* NotionAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2961B15B865B7E25BFA0A7C4 /* NotionAPIClient.swift */; };
+		B900973347BC814BBB14AE36 /* SyncServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9448806BFC37E086C7FEF289 /* SyncServiceTests.swift */; };
+		CE6B4BF9BCC821FE0164CBA2 /* CaptureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBDD3FB73AEF1D1069D444D /* CaptureView.swift */; };
+		D0107070663740CBF6E3D9C6 /* DatabaseListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6B7347C9E060374A8E4EEE /* DatabaseListViewModel.swift */; };
+		D909B4E2B4CDEAA058871238 /* PropertyValueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32C9C803231E92811C7480F /* PropertyValueTests.swift */; };
+		E66C7842C598D011F23D9A15 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F3C1D9DF32C84E61E6B727 /* WelcomeView.swift */; };
+		ED9E6F7086D5E9B0233EF042 /* CapturedEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDFCA4C3BCCA240EE1E14F0 /* CapturedEntry.swift */; };
+		EEED8B8D8C3489EAE927E453 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3726A1AF9A9BC7926F75EE87 /* NetworkMonitor.swift */; };
+		F4FE82AC1D145D37A4B17A73 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC359D7CDCF01C7F3F924CC /* AuthService.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FE351A0A93AA1A16385279D0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BF9EAFCF7D39D4776387B842 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 63F63AE207514575B740AED1;
+			remoteInfo = Kapture;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		06C6C3C46FE95385A614B3F3 /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
+		1FBDD3FB73AEF1D1069D444D /* CaptureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureView.swift; sourceTree = "<group>"; };
+		2526C4A6F3E3E4AB03B9A48E /* KaptureWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = KaptureWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		2961B15B865B7E25BFA0A7C4 /* NotionAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotionAPIClient.swift; sourceTree = "<group>"; };
+		3726A1AF9A9BC7926F75EE87 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
+		435078A4F86419886B73EDA7 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
+		4CD83C16D817D8269AFF9D9B /* NotionProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotionProperty.swift; sourceTree = "<group>"; };
+		608FEA6116CF3BB9FB11DE0C /* AuthServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServiceTests.swift; sourceTree = "<group>"; };
+		62C541C8811486311C0A5019 /* KaptureApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaptureApp.swift; sourceTree = "<group>"; };
+		663519EFCC07B56DDFE1D90F /* KaptureWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaptureWidget.swift; sourceTree = "<group>"; };
+		784C8B52E46ABFDF4A8291F7 /* DatabaseSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseSelectorView.swift; sourceTree = "<group>"; };
+		80F9E0EEF5F98D3213CEEE23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		8660D2675403BFFFD36F6F66 /* PropertyInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyInputView.swift; sourceTree = "<group>"; };
+		87F5B250CECE2182403FD82E /* CaptureViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureViewModel.swift; sourceTree = "<group>"; };
+		8F2CCFD9656092400B33FDA9 /* NotionAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotionAuthView.swift; sourceTree = "<group>"; };
+		8FDFCA4C3BCCA240EE1E14F0 /* CapturedEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturedEntry.swift; sourceTree = "<group>"; };
+		9448806BFC37E086C7FEF289 /* SyncServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncServiceTests.swift; sourceTree = "<group>"; };
+		A59DE239AD9BBEA938BA76F4 /* PropertyInputComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyInputComponents.swift; sourceTree = "<group>"; };
+		A6F3C1D9DF32C84E61E6B727 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		A71C8024DE3A99704DF4D4A7 /* SyncService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncService.swift; sourceTree = "<group>"; };
+		AB9DE9B5205B278A629AEE4F /* Kapture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kapture.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		ABC1664D5E87106BF44195FA /* DatabaseRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseRepository.swift; sourceTree = "<group>"; };
+		B3F69AE139152FA24EC21EA5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		B75256BEC122171A5CFBA6AD /* SmartRouterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartRouterService.swift; sourceTree = "<group>"; };
+		C32C9C803231E92811C7480F /* PropertyValueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyValueTests.swift; sourceTree = "<group>"; };
+		C830A728670B935216CC5DAA /* KaptureTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KaptureTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D1DD204F2415D86278B43041 /* CapturedEntryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturedEntryTests.swift; sourceTree = "<group>"; };
+		DFC359D7CDCF01C7F3F924CC /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		F400AB4ADE94C2E4A3EC00D9 /* CaptureViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureViewModelTests.swift; sourceTree = "<group>"; };
+		F6D7B4E786F0151C1F27F305 /* NotionDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotionDatabase.swift; sourceTree = "<group>"; };
+		FB6B7347C9E060374A8E4EEE /* DatabaseListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseListViewModel.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		042C845F2D2C4A5FCF159E07 /* Notion */ = {
+			isa = PBXGroup;
+			children = (
+				F6D7B4E786F0151C1F27F305 /* NotionDatabase.swift */,
+				4CD83C16D817D8269AFF9D9B /* NotionProperty.swift */,
+			);
+			path = Notion;
+			sourceTree = "<group>";
+		};
+		0CBB8B364B59C1AD9EB212E0 /* KaptureTests */ = {
+			isa = PBXGroup;
+			children = (
+				608FEA6116CF3BB9FB11DE0C /* AuthServiceTests.swift */,
+				D1DD204F2415D86278B43041 /* CapturedEntryTests.swift */,
+				F400AB4ADE94C2E4A3EC00D9 /* CaptureViewModelTests.swift */,
+				C32C9C803231E92811C7480F /* PropertyValueTests.swift */,
+				9448806BFC37E086C7FEF289 /* SyncServiceTests.swift */,
+			);
+			path = KaptureTests;
+			sourceTree = "<group>";
+		};
+		0DBAE1C1A07A8E4F76E792C9 /* Capture */ = {
+			isa = PBXGroup;
+			children = (
+				1FBDD3FB73AEF1D1069D444D /* CaptureView.swift */,
+				784C8B52E46ABFDF4A8291F7 /* DatabaseSelectorView.swift */,
+				8660D2675403BFFFD36F6F66 /* PropertyInputView.swift */,
+				FA3076603E25B8F81F910F82 /* PropertyInputComponents */,
+			);
+			path = Capture;
+			sourceTree = "<group>";
+		};
+		0F2225784C19A43CE15B6323 /* Local */ = {
+			isa = PBXGroup;
+			children = (
+				8FDFCA4C3BCCA240EE1E14F0 /* CapturedEntry.swift */,
+			);
+			path = Local;
+			sourceTree = "<group>";
+		};
+		247A17503CCCC3CED33FEAC2 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				435078A4F86419886B73EDA7 /* KeychainManager.swift */,
+				3726A1AF9A9BC7926F75EE87 /* NetworkMonitor.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		37728F3EB8D05662946A76A9 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				DFC359D7CDCF01C7F3F924CC /* AuthService.swift */,
+				ABC1664D5E87106BF44195FA /* DatabaseRepository.swift */,
+				2961B15B865B7E25BFA0A7C4 /* NotionAPIClient.swift */,
+				B75256BEC122171A5CFBA6AD /* SmartRouterService.swift */,
+				06C6C3C46FE95385A614B3F3 /* StorageService.swift */,
+				A71C8024DE3A99704DF4D4A7 /* SyncService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		3EAD1CB638BE5F0EDE356B49 /* KaptureWidget */ = {
+			isa = PBXGroup;
+			children = (
+				B3F69AE139152FA24EC21EA5 /* Info.plist */,
+				663519EFCC07B56DDFE1D90F /* KaptureWidget.swift */,
+			);
+			path = KaptureWidget;
+			sourceTree = "<group>";
+		};
+		62E4423695279B4866FB25D0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AB9DE9B5205B278A629AEE4F /* Kapture.app */,
+				C830A728670B935216CC5DAA /* KaptureTests.xctest */,
+				2526C4A6F3E3E4AB03B9A48E /* KaptureWidget.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6790ACF714D81C9DBB5C7D17 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				8F2CCFD9656092400B33FDA9 /* NotionAuthView.swift */,
+				A6F3C1D9DF32C84E61E6B727 /* WelcomeView.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		836AADAF3A22913D46E41D27 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0F2225784C19A43CE15B6323 /* Local */,
+				042C845F2D2C4A5FCF159E07 /* Notion */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A2272CC463457210D4C189D1 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				87F5B250CECE2182403FD82E /* CaptureViewModel.swift */,
+				FB6B7347C9E060374A8E4EEE /* DatabaseListViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		D55FAAEA3740526570B06D44 = {
+			isa = PBXGroup;
+			children = (
+				FAA889172EDB51E971F67503 /* Kapture */,
+				0CBB8B364B59C1AD9EB212E0 /* KaptureTests */,
+				3EAD1CB638BE5F0EDE356B49 /* KaptureWidget */,
+				62E4423695279B4866FB25D0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		DE191DFB744975147BC2E81C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6790ACF714D81C9DBB5C7D17 /* Authentication */,
+				0DBAE1C1A07A8E4F76E792C9 /* Capture */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		FA3076603E25B8F81F910F82 /* PropertyInputComponents */ = {
+			isa = PBXGroup;
+			children = (
+				A59DE239AD9BBEA938BA76F4 /* PropertyInputComponents.swift */,
+			);
+			path = PropertyInputComponents;
+			sourceTree = "<group>";
+		};
+		FAA889172EDB51E971F67503 /* Kapture */ = {
+			isa = PBXGroup;
+			children = (
+				80F9E0EEF5F98D3213CEEE23 /* Info.plist */,
+				FC8845694A73121E74E07A21 /* App */,
+				836AADAF3A22913D46E41D27 /* Models */,
+				37728F3EB8D05662946A76A9 /* Services */,
+				247A17503CCCC3CED33FEAC2 /* Utilities */,
+				A2272CC463457210D4C189D1 /* ViewModels */,
+				DE191DFB744975147BC2E81C /* Views */,
+			);
+			path = Kapture;
+			sourceTree = "<group>";
+		};
+		FC8845694A73121E74E07A21 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				62C541C8811486311C0A5019 /* KaptureApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		579274C84A8D93E78501E265 /* KaptureWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 41BCB3D3053B1A07DE264D6B /* Build configuration list for PBXNativeTarget "KaptureWidget" */;
+			buildPhases = (
+				CB11185563A790ABBA7F59CB /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KaptureWidget;
+			packageProductDependencies = (
+			);
+			productName = KaptureWidget;
+			productReference = 2526C4A6F3E3E4AB03B9A48E /* KaptureWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		63F63AE207514575B740AED1 /* Kapture */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BA817219E6B9A43B9EC3CEBA /* Build configuration list for PBXNativeTarget "Kapture" */;
+			buildPhases = (
+				699D27C17E46E4F6493A9325 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Kapture;
+			packageProductDependencies = (
+			);
+			productName = Kapture;
+			productReference = AB9DE9B5205B278A629AEE4F /* Kapture.app */;
+			productType = "com.apple.product-type.application";
+		};
+		64D51C819F28B909BA593331 /* KaptureTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6281530E858D6B8CC5905191 /* Build configuration list for PBXNativeTarget "KaptureTests" */;
+			buildPhases = (
+				678B943215E735365260FBF2 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				56F7C3089DCE2D72806EC8A7 /* PBXTargetDependency */,
+			);
+			name = KaptureTests;
+			packageProductDependencies = (
+			);
+			productName = KaptureTests;
+			productReference = C830A728670B935216CC5DAA /* KaptureTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BF9EAFCF7D39D4776387B842 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 2610;
+				TargetAttributes = {
+					579274C84A8D93E78501E265 = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
+					64D51C819F28B909BA593331 = {
+						TestTargetID = 63F63AE207514575B740AED1;
+					};
+				};
+			};
+			buildConfigurationList = BBB5DA8EBB6E2D06B069C60F /* Build configuration list for PBXProject "Kapture" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = D55FAAEA3740526570B06D44;
+			minimizedProjectReferenceProxies = 1;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				63F63AE207514575B740AED1 /* Kapture */,
+				64D51C819F28B909BA593331 /* KaptureTests */,
+				579274C84A8D93E78501E265 /* KaptureWidget */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		678B943215E735365260FBF2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				93C5BBD3848EEC0D7CA4EC4E /* AuthServiceTests.swift in Sources */,
+				2551BBD1E7538225CEA7E549 /* CaptureViewModelTests.swift in Sources */,
+				11A4A28E1444D8B91C386D17 /* CapturedEntryTests.swift in Sources */,
+				D909B4E2B4CDEAA058871238 /* PropertyValueTests.swift in Sources */,
+				B900973347BC814BBB14AE36 /* SyncServiceTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		699D27C17E46E4F6493A9325 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4FE82AC1D145D37A4B17A73 /* AuthService.swift in Sources */,
+				CE6B4BF9BCC821FE0164CBA2 /* CaptureView.swift in Sources */,
+				3780C1DF67C5832064A82FF6 /* CaptureViewModel.swift in Sources */,
+				ED9E6F7086D5E9B0233EF042 /* CapturedEntry.swift in Sources */,
+				D0107070663740CBF6E3D9C6 /* DatabaseListViewModel.swift in Sources */,
+				8410663FF69DBF4DABA00A9A /* DatabaseRepository.swift in Sources */,
+				6B8CA3067AD52DFF24B2B225 /* DatabaseSelectorView.swift in Sources */,
+				9DEB946965F6C30A62BC2314 /* KaptureApp.swift in Sources */,
+				82B17B99B72085501EEF225B /* KeychainManager.swift in Sources */,
+				EEED8B8D8C3489EAE927E453 /* NetworkMonitor.swift in Sources */,
+				B79411B7FCD92B46798C5730 /* NotionAPIClient.swift in Sources */,
+				B2A3726D886F70FDF1F5AE26 /* NotionAuthView.swift in Sources */,
+				55094034AE21136C5939D8B6 /* NotionDatabase.swift in Sources */,
+				80EDBC0B8D1FF65E4AF303F9 /* NotionProperty.swift in Sources */,
+				95E28814E7A9492AC37DEA57 /* PropertyInputComponents.swift in Sources */,
+				59A459F2CC1F4798F9B70622 /* PropertyInputView.swift in Sources */,
+				7F83F1FFCE1A30F96F9E01F9 /* SmartRouterService.swift in Sources */,
+				A044F420BDBC45C4458964ED /* StorageService.swift in Sources */,
+				3D6260C53279ED29D76AB03B /* SyncService.swift in Sources */,
+				E66C7842C598D011F23D9A15 /* WelcomeView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB11185563A790ABBA7F59CB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A2C09E5994332100290BDBFE /* KaptureWidget.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		56F7C3089DCE2D72806EC8A7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 63F63AE207514575B740AED1 /* Kapture */;
+			targetProxy = FE351A0A93AA1A16385279D0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		28EB34398EAAA2BBC5E5FE33 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = Kapture/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.kapture.app;
+				PRODUCT_NAME = Kapture;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.9;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		74EEECC4E905D4A9F3DC3621 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		8467ABDE885663FD0CBCA4F1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = KaptureWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.kapture.widget;
+				PRODUCT_NAME = KaptureWidget;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.9;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		95D8F69F78F9D6759CB07556 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.kapture.tests;
+				PRODUCT_NAME = KaptureTests;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.9;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Kapture.app/Kapture";
+				TEST_TARGET_NAME = Kapture;
+			};
+			name = Debug;
+		};
+		9E73DA184D4429A5007D3DC1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = Kapture/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.kapture.app;
+				PRODUCT_NAME = Kapture;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.9;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		9FF7D5F17A2B5F1A9D2F8D33 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = KaptureWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.kapture.widget;
+				PRODUCT_NAME = KaptureWidget;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.9;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		CA995A259E9EC357E485380A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.kapture.tests;
+				PRODUCT_NAME = KaptureTests;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.9;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Kapture.app/Kapture";
+				TEST_TARGET_NAME = Kapture;
+			};
+			name = Release;
+		};
+		FA0679A22BE8DBF1BDD11CB3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		41BCB3D3053B1A07DE264D6B /* Build configuration list for PBXNativeTarget "KaptureWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8467ABDE885663FD0CBCA4F1 /* Debug */,
+				9FF7D5F17A2B5F1A9D2F8D33 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		6281530E858D6B8CC5905191 /* Build configuration list for PBXNativeTarget "KaptureTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				95D8F69F78F9D6759CB07556 /* Debug */,
+				CA995A259E9EC357E485380A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		BA817219E6B9A43B9EC3CEBA /* Build configuration list for PBXNativeTarget "Kapture" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				28EB34398EAAA2BBC5E5FE33 /* Debug */,
+				9E73DA184D4429A5007D3DC1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		BBB5DA8EBB6E2D06B069C60F /* Build configuration list for PBXProject "Kapture" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				74EEECC4E905D4A9F3DC3621 /* Debug */,
+				FA0679A22BE8DBF1BDD11CB3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BF9EAFCF7D39D4776387B842 /* Project object */;
+}

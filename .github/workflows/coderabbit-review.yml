@@ -1,0 +1,72 @@
+name: CodeRabbit Review
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  push:
+    branches:
+      - main
+      - develop
+
+jobs:
+  coderabbit-review:
+    name: CodeRabbit Continuous Review
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Full history for better diff analysis
+      
+      - name: Setup Swift
+        uses: swift-actions/setup-swift@v1
+        with:
+          swift-version: "5.9"
+      
+      - name: Run SwiftLint (if available)
+        continue-on-error: true
+        run: |
+          if command -v swiftlint &> /dev/null; then
+            swiftlint lint --strict || true
+          fi
+      
+      - name: CodeRabbit Review
+        uses: coderabbitai/openai-pr-reviewer@latest
+        with:
+          # GitHub token for posting comments
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          
+          # CodeRabbit configuration
+          config_path: .coderabbit.yaml
+          
+          # Review settings
+          review_simple_changes: true
+          review_comment_labels: suggestions
+          path_filters: |
+            Kapture/**/*.swift
+            KaptureWidget/**/*.swift
+            KaptureTests/**/*.swift
+          
+          # Language settings
+          language: swift
+          
+          # Additional options
+          review_only_changed_files: true
+          enable_auto_review: true
+          enable_auto_summary: true
+          
+        env:
+          # Optional: Add OpenAI API key if using OpenAI reviewer
+          # OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          
+          # GitHub token (automatically provided)
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Post Review Summary
+        if: always()
+        run: |
+          echo "## CodeRabbit Review Complete" >> $GITHUB_STEP_SUMMARY
+          echo "Review completed for Swift files in this PR." >> $GITHUB_STEP_SUMMARY
+          echo "Check the PR comments for detailed suggestions." >> $GITHUB_STEP_SUMMARY
+

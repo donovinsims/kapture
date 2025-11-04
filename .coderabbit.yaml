@@ -1,0 +1,123 @@
+# CodeRabbit Configuration for Kapture iOS App
+# Continuous code review and quality checks
+
+language:
+  - swift
+
+# Review settings
+review:
+  # Enable automatic reviews on pull requests
+  enabled: true
+  
+  # Review only changed files, not entire codebase
+  review_only_changed_files: true
+  
+  # Request review when PR is ready
+  request_review_on_ready_for_review: true
+  
+  # Paths to include/exclude
+  path_filters:
+    include:
+      - "Kapture/**/*.swift"
+      - "KaptureWidget/**/*.swift"
+      - "KaptureTests/**/*.swift"
+    exclude:
+      - "**/*.xcodeproj/**"
+      - "**/*.xcworkspace/**"
+      - "**/xcuserdata/**"
+      - "**/Pods/**"
+      - "**/DerivedData/**"
+
+# Code quality checks
+quality:
+  # Enable Swift-specific checks
+  enable_swift_checks: true
+  
+  # Check for:
+  - force_unwraps
+  - memory_leaks
+  - retain_cycles
+  - async_await_misuse
+  - actor_isolation_issues
+  - unused_code
+  - code_complexity
+  
+  # Complexity thresholds
+  complexity:
+    max_cognitive_complexity: 15
+    max_cyclomatic_complexity: 10
+
+# Security checks
+security:
+  enabled: true
+  checks:
+    - hardcoded_secrets
+    - unsafe_api_usage
+    - keychain_misuse
+    - network_security
+
+# Suggestions
+suggestions:
+  enabled: true
+  
+  # Suggest improvements for:
+  - error_handling
+  - async_patterns
+  - actor_usage
+  - memory_management
+  - performance_optimization
+  - code_readability
+
+# Comments
+comments:
+  # Post inline comments on code
+  enabled: true
+  
+  # Comment style
+  style: "polite"
+  
+  # Minimum confidence for suggestions
+  min_confidence: 0.7
+
+# Ignore patterns (known false positives or acceptable patterns)
+ignore:
+  - "**/Preview*.swift"
+  - "**/*Preview.swift"
+  - "**/XCTest*.swift"
+  
+# Custom rules for Swift/SwiftUI
+rules:
+  swift:
+    - "Prefer guard statements over if-let when possible"
+    - "Avoid force unwraps, use optional binding"
+    - "Use async/await instead of completion handlers"
+    - "Prefer actor isolation for shared mutable state"
+    - "Use @MainActor for UI-related code"
+    - "Avoid retain cycles in closures"
+    - "Use weak self in async closures"
+  
+  swiftui:
+    - "Use @StateObject for view models"
+    - "Avoid creating views in body property"
+    - "Use proper view modifiers order"
+    - "Prefer environment values over global state"
+
+# Report generation
+report:
+  # Generate summary report
+  enabled: true
+  
+  # Report format
+  format: "markdown"
+  
+  # Include in PR comment
+  include_in_pr: true
+
+# Notification settings
+notifications:
+  # Notify on high-severity issues
+  on_high_severity: true
+  
+  # Notify on security issues
+  on_security: true
+
