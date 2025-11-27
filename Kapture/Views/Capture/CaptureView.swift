@@ -1,3 +1,4 @@
+#if canImport(SwiftUI)
 import SwiftUI
 
 /// Main capture interface view
@@ -187,3 +188,5 @@ struct CaptureView: View {
 #Preview {
     CaptureView()
 }
+
+#endif

@@ -1,5 +1,20 @@
 import Foundation
+#if canImport(Combine)
 import Combine
+#else
+// Minimal stubs so the package can compile on platforms without Combine (e.g., Linux CI)
+protocol ObservableObject {}
+
+@propertyWrapper
+struct Published<Value> {
+    var wrappedValue: Value
+    var projectedValue: Published<Value> { self }
+
+    init(wrappedValue: Value) {
+        self.wrappedValue = wrappedValue
+    }
+}
+#endif
 
 /// Manages Notion OAuth authentication and token management.
 /// Provides secure token storage, OAuth flow handling, and authentication state management.

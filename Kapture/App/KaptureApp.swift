@@ -1,3 +1,4 @@
+#if canImport(SwiftUI)
 import SwiftUI
 
 @main
@@ -101,4 +102,6 @@ class AppState: ObservableObject {
         // Initialize app state
     }
 }
+
+#endif
 
