@@ -1,3 +1,4 @@
+#if canImport(SwiftUI)
 import SwiftUI
 import SafariServices
 
@@ -156,3 +157,5 @@ struct SafariView: UIViewControllerRepresentable {
 #Preview {
     NotionAuthView()
 }
+
+#endif

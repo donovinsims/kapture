@@ -1,3 +1,6 @@
+import Foundation
+
+#if canImport(SwiftUI)
 import SwiftUI
 
 /// Main view for inputting property values
@@ -51,6 +54,8 @@ struct PropertyInputView: View {
         .padding(.vertical, 8)
     }
 }
+
+#endif
 
 /// Value holder for property inputs
 struct PropertyValue: Equatable {

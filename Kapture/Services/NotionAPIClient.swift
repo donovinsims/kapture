@@ -1,4 +1,7 @@
 import Foundation
+#if canImport(FoundationNetworking)
+import FoundationNetworking
+#endif
 
 /// Client for communicating with the Notion API.
 /// Handles all HTTP requests to Notion's REST API with proper authentication and error handling.

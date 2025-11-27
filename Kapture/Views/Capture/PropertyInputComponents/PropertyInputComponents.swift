@@ -1,3 +1,4 @@
+#if canImport(SwiftUI)
 import SwiftUI
 
 /// Text property input component
@@ -211,11 +212,13 @@ struct PeoplePropertyView: View {
 /// Unsupported property view
 struct UnsupportedPropertyView: View {
     let propertyType: String
-    
+
     var body: some View {
         Text("Property type '\(propertyType)' is not yet supported")
             .foregroundColor(.secondary)
             .font(.system(size: 15))
     }
 }
+
+#endif
 

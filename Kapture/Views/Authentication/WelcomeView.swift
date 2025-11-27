@@ -1,3 +1,4 @@
+#if canImport(SwiftUI)
 import SwiftUI
 
 /// Welcome screen shown to unauthenticated users
@@ -118,4 +119,6 @@ struct FeatureRow: View {
 #Preview {
     WelcomeView()
 }
+
+#endif
 

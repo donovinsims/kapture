@@ -1,3 +1,4 @@
+#if canImport(SwiftUI)
 import SwiftUI
 
 /// View for selecting a Notion database
@@ -213,4 +214,6 @@ struct ErrorStateView: View {
 #Preview {
     DatabaseSelectorView(selectedDatabase: .constant(nil))
 }
+
+#endif
 
